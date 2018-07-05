@@ -1,3 +1,12 @@
 .Animals {
-  color: green;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  height: 50vh;
+  overflow: scroll;
+  background-color: purple;
+
+  ul{
+    padding: 0;
+  }
 }
