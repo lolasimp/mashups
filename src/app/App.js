@@ -10,11 +10,24 @@ class App extends Component {
   state = {
     animals: [],
   }
+
+  submitForm = (animal) => {
+    mashupRequests.postRequest(animal)
+      .then(() => {
+        mashupRequests.getRequest()
+          .then((animals) => {
+            this.setState({ animals });
+          });
+      })
+      .catch((err) => {
+        console.error('error with new animal', err);
+      });
+  }
   componentDidMount () {
     connection();
     mashupRequests.getRequest()
       .then((animals) => {
-        this.setState({animals});
+        this.setState({ animals });
       })
       .catch((err) => {
         console.error('error with animals GET', err);
@@ -23,11 +36,16 @@ class App extends Component {
   render () {
     return (
       <div className="App">
-        <div className="col-sm-6">
-          <Animals animals= {this.state.animals}/>
+        <div className="col-sm-8">
+          <Animals
+            animals={this.state.animals}
+          />
         </div>
-        <div className="col-sm-6">
-          <AnimalForm />
+
+        <div className="col-sm-4">
+          <AnimalForm
+            onSubmit={this.submitForm}
+          />
         </div>
       </div>
     );

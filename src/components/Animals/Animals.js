@@ -14,8 +14,10 @@ class Animals extends React.Component {
     const {animals} = this.props;
     const animalItemComponents = animals.map((animal) => {
       return (
-        // <li key={animal.id}>{animal.name}</li>
-        <AnimalItem animal = {animal} key={animal.id}/>
+        <AnimalItem
+          animal = {animal}
+          key={animal.id}
+        />
       );
     });
     return (

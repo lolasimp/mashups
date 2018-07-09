@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import './AnimalItem.css';
 import { animalShape } from '../../propz/animalProp';
@@ -9,14 +9,19 @@ class AnimalItem extends React.Component {
   static propTypes = {
     animal: animalShape,
   }
-  render() {
+  render () {
     const { animal } = this.props;
     return (
-      <div className="animal-picture">{animal.imgUrl}
-      </div>
-      <div className="animal-name">{animal.name}
-      </div>
-      <div>{animal.description}
+      <div className="card-holder col-sm-4">
+        <div className="thumbnail">
+          <div className="animal-photo">
+            <img src={animal.imgUrl} alt="" />
+          </div>
+          <div className="caption">
+            <h2>{animal.name}</h2>
+            <p>{animal.description}</p>
+          </div>
+        </div>
       </div>
     );
   }
